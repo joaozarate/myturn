@@ -12,12 +12,24 @@
 	<artifactId>myturn</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>My Turn</name>
-	<description>Is a mobile software application designed to solve the common problem of disorganized speaking order in meetings, group discussions, or any situation where multiple individuals need to share their opinions or ideas.</description>
+	<description>Is a back-end software application designed to solve the common problem of disorganized speaking order in meetings, group discussions, or any situation where multiple individuals need to share their opinions or ideas.</description>
 	<properties>
 		<java.version>17</java.version>
 		<!-- Resolving CVE-2022-1471  with the SnakeYAML 2.0 Release -->
 		<snakeyaml.version>2.0</snakeyaml.version>
+		<secretmanager>2.18.0</secretmanager>
 	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.google.cloud</groupId>
+				<artifactId>libraries-bom</artifactId>
+				<version>26.16.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -44,6 +56,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-secretmanager</artifactId>
+			<version>${secretmanager}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
@@ -52,6 +70,7 @@
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
